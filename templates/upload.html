@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Upload File</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #f5f5f7;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    .container {
+      max-width: 400px;
+      margin: 80px auto;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      font-size: 24px;
+      text-align: center;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    /* Custom file input styling */
+    .file-input-container {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      width: 100%;
+    }
+    .file-input-label {
+      display: block;
+      background-color: #0071e3;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: 16px;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    .file-input-label:hover {
+      background-color: #005bb5;
+    }
+    .file-input-container input[type="file"] {
+      font-size: 100px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      cursor: pointer;
+    }
+    input[type="submit"] {
+      background-color: #0071e3;
+      border: none;
+      color: #fff;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    input[type="submit"]:hover {
+      background-color: #005bb5;
+    }
+    a {
+      display: block;
+      text-align: center;
+      color: #0071e3;
+      text-decoration: none;
+      font-size: 14px;
+      margin-top: 20px;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Upload File</h1>
+    <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+      <div class="file-input-container">
+        <label class="file-input-label" for="fileInput">Choose File</label>
+        <input id="fileInput" type="file" name="file" required>
+      </div>
+      <input type="submit" value="Upload">
+    </form>
+    <a href="{{ url_for('index') }}">Back to file list</a>
+  </div>
+  <!-- Optional JavaScript to update label text with the selected file name -->
+  <script>
+    const fileInput = document.getElementById('fileInput');
+    const fileLabel = document.querySelector('.file-input-label');
+
+    fileInput.addEventListener('change', function() {
+      if (fileInput.files.length > 0) {
+        fileLabel.textContent = fileInput.files[0].name;
+      } else {
+        fileLabel.textContent = 'Choose File';
+      }
+    });
+  </script>
+</body>
+</html>
