@@ -49,6 +49,17 @@
       cursor: pointer;
       transition: background-color 0.2s ease;
     }
+    .file-input-field {
+      display: block;
+      background-color: #05519c;
+      color: #fff;
+      padding: 10px 16px;
+      font-size: 16px;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
     .file-input-label:hover {
       background-color: #005bb5;
     }
@@ -92,7 +103,7 @@
     <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
       <div class="file-input-container">
         <label class="file-input-label" for="fileInput">Choose File</label>
-        <input id="fileInput" class="file-input-label" type="file" name="file" required>
+        <input id="fileInput" class="file-input-field" type="file" name="file" required>
       </div>
       <input type="submit" value="Upload">
     </form>
