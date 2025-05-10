@@ -13,8 +13,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy the entire application code into the container
 COPY . .
 
-# Expose the ports needed for Flask and FTP
-EXPOSE 5000 2121
+# Expose the ports needed for Flask
+EXPOSE 5000
 
-# Run both the FTP Server and the Flask Web UI
-CMD ["sh", "-c", "python app.py & python web-ui.py"]
+# Run the Flask Web UI
+CMD ["sh", "-c", "python web-ui.py"]
